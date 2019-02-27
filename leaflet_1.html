@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="leaflet/leaflet.css"/>
+<link rel="stylesheet" href="leaflet.css" />	
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="leaflet/leaflet.js"/></script>
+<div id="mapid"></div>
+<script type="text/javascript">
+	var mymap = L.map('mapid').setView([0, 0], 1);
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1Ijoic29zemhhbmd5dWUiLCJhIjoiY2pzanRmbmVqMWRiaDQ5azZhcWJhaXBmZyJ9.ZvsZ7_s6RN2IzZ2Dpxm74w'
+	}).addTo(mymap);
+	var Brasilia = L.marker([-15.601,-47.713],{bubblingMouseEvents:true}).addTo(mymap);	
+	Brasilia.bindPopup("Brasilia").openPopup();
+	var Lerwick	= L.marker([60.1389,-1.1847],{bubblingMouseEvents:true}).addTo(mymap);
+	Lerwick.bindPopup("Lerwick").openPopup();
+	var South_Pole = L.marker([-89.983,-24.799],{bubblingMouseEvents:true}).addTo(mymap);
+	South_Pole.bindPopup("South_Pole").openPopup();
+	var Sioux_Falls	= L.marker([43.73,-96.62],{bubblingMouseEvents:true}).addTo(mymap);
+	Sioux_Falls.bindPopup("Sioux_Falls").openPopup();
+	var Tamanrasset	= L.marker([22.7903,5.5292],{bubblingMouseEvents:true}).addTo(mymap);
+	Tamanrasset.bindPopup("Tamanrasset").openPopup();
+
+</script>
+<div class="col-md-8 col-md-offset-2">
+				<form action="leaflet_2.php" method="post">
+				<div class="form-group">
+					<input  type="text" placeholder="lat"  name="lat" id="lat"/><br>
+					<input  type="text" placeholder="lon"  name="lon" id="lon"/>
+					<button type="submit" class="btn btn-default btn-block">go!</button>
+				</div>
+				</form>
+				
+</div>
+<script type="text/javascript">
+	Brasilia.on('click',function(){
+		var lat_lon=(Brasilia.getLatLng().toString()).split("(")[1];
+		lat_lon=lat_lon.split(")")[0];
+		document.getElementById("lat").value=lat_lon.split(",")[0].trim();
+		document.getElementById("lon").value=lat_lon.split(",")[1].trim();
+	});
+	Lerwick.on('click',function(){
+		var lat_lon=(Lerwick.getLatLng().toString()).split("(")[1];
+		lat_lon=lat_lon.split(")")[0];
+		document.getElementById("lat").value=lat_lon.split(",")[0].trim();
+		document.getElementById("lon").value=lat_lon.split(",")[1].trim();
+	});
+	South_Pole.on('click',function(){
+		var lat_lon=(South_Pole.getLatLng().toString()).split("(")[1];
+		lat_lon=lat_lon.split(")")[0];
+		document.getElementById("lat").value=lat_lon.split(",")[0].trim();
+		document.getElementById("lon").value=lat_lon.split(",")[1].trim();
+	});
+	Sioux_Falls.on('click',function(){
+		var lat_lon=(Sioux_Falls.getLatLng().toString()).split("(")[1];
+		lat_lon=lat_lon.split(")")[0];
+		document.getElementById("lat").value=lat_lon.split(",")[0].trim();
+		document.getElementById("lon").value=lat_lon.split(",")[1].trim();
+	});
+	Tamanrasset.on('click',function(){
+		var lat_lon=(Tamanrasset.getLatLng().toString()).split("(")[1];
+		lat_lon=lat_lon.split(")")[0];
+		document.getElementById("lat").value=lat_lon.split(",")[0].trim();
+		document.getElementById("lon").value=lat_lon.split(",")[1].trim();
+	});
+</script>
