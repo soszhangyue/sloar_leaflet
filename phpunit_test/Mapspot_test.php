@@ -19,11 +19,12 @@ class Leaflet_Map_SpotTest extends TestCase{
 	public function tearDown(){}
 	final public function getConnection()//db connection ok?
     {
+    	require 'solardb.php';//use database config
         if ($this->conn === null) {
             if (self::$pdo == null) {
-                self::$pdo = new PDO('mysql:host=127.0.0.1;dbname=','','');
+                self::$pdo = new PDO("mysql:host=$ip;dbname=$solar_db","$account","$pass");
             }
-            $this->conn = $this->createDefaultDBConnection(self::$pdo, 'bright_sun');
+            $this->conn = $this->createDefaultDBConnection(self::$pdo, "$solar_db");
         }
 
         return $this->conn;
